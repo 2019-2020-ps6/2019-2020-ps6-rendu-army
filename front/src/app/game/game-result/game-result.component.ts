@@ -52,15 +52,12 @@ export class GameResultComponent implements OnInit {
     }
 
     back(){
-        this.delete.emit();
         this.router.navigate(['/quiz-list']);
     }
 
     retry(){
 
         var quiz = this.game.quiz;
-        this.delete.emit();
-
         this.gameService.createGame(quiz);
         this.gameService.gameCreated$.subscribe((game: Game) => {
             console.log("Retrying")

@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
       case "quiz-list" : this.router.navigate(['/accueil']); break;
       case "edit-quiz" : this.router.navigate(['/quiz-list']); break;
       case "settings"  : this.goBack.emit(this.routeService.getPreviousUrl()); break;
+      case "history" : this.router.navigate(['/accueil']); break;
     }
   }
 }

@@ -1,0 +1,8 @@
+<app-header [titre]="'Historique'"></app-header>
+
+<div *ngIf="games!=null" class="historyContenainer">
+    <div *ngFor = "let game of games">
+
+        <app-history [game]="game"></app-history>
+    </div>
+</div>

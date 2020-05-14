@@ -10,4 +10,5 @@ export interface Game{
     step:number;
     rightAnswer:number;
     userId:number;
+    isFinish:boolean;
 }

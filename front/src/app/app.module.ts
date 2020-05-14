@@ -28,6 +28,9 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 import { RouteService } from 'src/services/route.service';
 import { GameResultComponent } from './game/game-result/game-result.component';
 import { PopupComponent } from './popup/popup.component';
+import { HistoriesComponent } from './histories/histories.component';
+import { HistoryGameComponent } from './histories/history-game/history-game.component';
+import { HistoryComponent } from './histories/history/history.component';
 
 
 @NgModule({
@@ -52,6 +55,9 @@ import { PopupComponent } from './popup/popup.component';
     UserComponent,
     UserFormComponent,
     PopupComponent,
+    HistoriesComponent,
+    HistoryGameComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

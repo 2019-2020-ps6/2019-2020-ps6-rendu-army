@@ -1,6 +1,7 @@
 const { Router } = require('express')
 
 const { User } = require('../../models')
+const GameRouter = require('./games')
 
 const router = new Router()
 
@@ -58,6 +59,7 @@ router.put('/:userId', (req, res) => {
   
 })
 
+router.use('/:userId/games', GameRouter)
 
 module.exports = router
 

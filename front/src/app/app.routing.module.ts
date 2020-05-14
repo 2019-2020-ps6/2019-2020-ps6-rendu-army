@@ -7,6 +7,7 @@ import { GameComponent } from './game/game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { QuizListTheme } from './quizzes/quiz-list-theme/quiz-list-theme.component';
 import { UserListComponent } from './users/users-list/users-list.component';
+import { HistoriesComponent } from './histories/histories.component';
 
 const routes: Routes = [
     {path:'', component: UserListComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path:'game/:id', component: GameComponent},
     {path:'settings', component: SettingsComponent},
     {path:'quiz-list/:theme', component: QuizListTheme},
+    {path:'history', component: HistoriesComponent},
 ];
 
 @NgModule({

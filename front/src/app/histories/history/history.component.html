@@ -1,0 +1,21 @@
+<div (click)="showMore()" class="content" [ngStyle]="{'background-color': backgroundColor()}">
+
+    <div class="GameStat">
+        <span class="span">
+            {{getGameDate()}}
+        </span>
+    </div>
+    <div class="GameStat">
+        <span class="span">
+            {{game.quiz.name}}
+        </span>
+    </div>
+    <div class="GameStat">
+        <span class="span">
+            {{game.rightAnswer}} / {{game.quiz.questions.length}}
+        </span>
+    </div>
+</div>
+<div class=detail>
+    <app-history-game [game]="game" [ngStyle]="{'display':more}" class="GameDetail"></app-history-game>
+</div>

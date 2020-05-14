@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject, of } from 'rxjs';
+import { Subject, of, BehaviorSubject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Game } from 'src/models/game.model';
@@ -18,16 +18,27 @@ export class GameService {
 
   
   private game: Game;
+  private games: Game[];
 
   public gameCreated$: Subject<Game> = new Subject();
   public gameSelected$ : Subject<Game> = new Subject();
   public gameNotFinished$ : Subject<Game> = new Subject();
+  public games$: BehaviorSubject<Game[]> = new BehaviorSubject(this.games);
 
   private gameUrl = serverUrl + '/game';
+  private userUrl = serverUrl + '/users';
 
   private httpOptions = httpOptionsBase;
 
   constructor(private http: HttpClient, private userService : UserService) {}
+
+  setGamesFromUrl(userId : number){
+
+    this.http.get<Game[]>(this.userUrl + '/' + userId + '/games').subscribe((gameList) => {
+      this.games = gameList;
+      this.games$.next(this.games);
+    });
+  }
 
   createGame(quiz:Quiz) {
     
@@ -38,6 +49,7 @@ export class GameService {
     this.game.answersSelected = [];
     this.game.rightAnswer = 0;
     this.game.userId = this.userService.getSelectedUser().id;
+    this.game.isFinish = false;
     this.http.post<Game>(this.gameUrl, this.game, this.httpOptions).subscribe((game) => {
 
       this.game = game;
@@ -56,7 +68,7 @@ export class GameService {
 
   setNotFinishedGame(userId:number){
 
-    const urlWithId = this.gameUrl + '/userId/' + userId;
+    const urlWithId = this.userUrl + '/' + userId + '/games/notFinish';
     this.http.get<Game>(urlWithId).subscribe((game) => {
       this.gameNotFinished$.next(game);
       this.game = game;
@@ -70,6 +82,8 @@ export class GameService {
     this.game.answersSelected.push(answer);
     if(answer.isCorrect)
       this.game.rightAnswer++;
+    if(this.game.step + 1 == this.game.quiz.questions.length)
+      this.game.isFinish = true;
     this.http.put<Game>(urlWithId, this.game, this.httpOptions).subscribe((game) => {
       this.game = game;
       this.gameSelected$.next(this.game);

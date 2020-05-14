@@ -7,19 +7,8 @@
     {{game.rightAnswer}} / {{game.quiz.questions.length}}
     
 </div>
-<table class="span">
-    <tr style="text-align: left;">
-        <th style="padding-right: 40px;">Questions</th>
-        <th style="padding-right: 40px;">Votre Réponse</th>
-        <th style="padding-right: 40px;">Résultat</th>
-    </tr>
-    <tr *ngFor = "let answer of game.answersSelected ; let i = index" [ngStyle]="{'background-color': !game.answersSelected[i].isCorrect ? '#e38181' : '#81e389'}">
-        <td style="padding-right: 40px;">{{game.quiz.questions[i].label}}</td>
-        <td>{{game.answersSelected[i].value}}</td>
-        <td *ngIf="game.answersSelected[i].isCorrect; else elseBlock">Vrai</td>
-        <ng-template #elseBlock>Faux</ng-template>
-    </tr>
-</table>
+
+<app-history-game [game]="game"></app-history-game>
 
 <div class="button">
     <button class="button-card" (click)="retry()">Réessayer</button>

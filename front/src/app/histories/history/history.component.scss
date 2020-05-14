@@ -1,0 +1,23 @@
+.content{
+    display: table;
+    width: 99%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    table-layout: fixed;
+    margin: 0.5% 0.5%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: box-shadow 0.4s ease;
+}
+
+.content:hover{
+    box-shadow: 10px 5px rgb(43, 42, 42);
+}
+
+.GameStat{
+
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 15px 50px;
+}

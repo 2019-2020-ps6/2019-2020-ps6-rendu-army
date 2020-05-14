@@ -8,4 +8,5 @@ module.exports = new BaseModel('Game', {
   step: Joi.number(),
   rightAnswer: Joi.number(),
   userId: Joi.number(),
+  isFinish: Joi.boolean(),
 })
