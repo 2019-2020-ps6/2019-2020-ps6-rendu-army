@@ -4,6 +4,7 @@ import { Game } from 'src/models/game.model';
 import { GameService } from 'src/services/game.service';
 import { Answer } from 'src/models/question.model';
 import { QuestionComponent } from '../questions/question/question.component';
+import { T2sService } from 'src/services/t2s.service';
 
 @Component({
   selector: 'app-game',
@@ -15,7 +16,7 @@ export class GameComponent implements OnInit {
   onlyOnce : number;
   onlyOnce2 : number;
   
-  constructor(private route: ActivatedRoute, private gameService: GameService) { 
+  constructor(private route: ActivatedRoute, private gameService: GameService, private t2sService : T2sService) { 
     this.onlyOnce=-1;
     this.onlyOnce2=-1;
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -58,7 +59,7 @@ export class GameComponent implements OnInit {
         text2=this.createAnswersText(text2,rep);
         var text =this.game.quiz.questions[this.game.step].label;
         text=text+" "+text2;
-        this.t2s(text);
+        this.t2sService.t2s(text);
         this.onlyOnce=this.game.step;
       }
 
@@ -73,26 +74,7 @@ export class GameComponent implements OnInit {
    * @param txt le texte a lire
    */
 
-  t2s(txt:string){
 
-    //Suppresion de la queue precedente
-    if(speechSynthesis.speaking){
-      speechSynthesis.cancel();
-    }
-
-    //Pause le text-to-speech si l'user ne le veut pas
-    if(sessionStorage.getItem("t2sOn")=="false"){
-      if(!speechSynthesis.paused){
-      speechSynthesis.pause();
-      }
-    }
-
-    //Lecture du text
-    var msg = new SpeechSynthesisUtterance();
-    msg.text=txt;
-    msg.lang="fr-FR";
-    window.speechSynthesis.speak(msg);
-  }
 
   /**
    * Permet de creer le text contenant les réponses au format voulue (haut,bas,gauche,droite)
@@ -140,7 +122,7 @@ export class GameComponent implements OnInit {
     //lecture des resultats seulement une fois
     if(b && this.onlyOnce2!=this.onlyOnce){
       var txt = "Vous avez"+ this.game.rightAnswer +"bonne reponse sur" + this.game.quiz.questions.length +"questions .";
-      this.t2s(txt);
+      this.t2sService.t2s(txt);
       this.onlyOnce2=this.onlyOnce;
     }
 
