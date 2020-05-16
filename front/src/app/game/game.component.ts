@@ -141,4 +141,8 @@ export class GameComponent implements OnInit {
 
     this.gameService.deleteGame();
   }
+
+  callT2s(txt:string){
+    this.t2sService.t2s(txt);
+  }
 }

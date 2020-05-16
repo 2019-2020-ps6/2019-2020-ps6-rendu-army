@@ -7,6 +7,7 @@
             <h2 class="question">        
                 Question : {{game.step + 1}}
             </h2>
+            <button class=button-card (click)="repeatQuestion()" (mouseover)="callT2s('Répéter la question')" (focus)="callT2s('Répéter la question')"><img src="assets/close.png" width="90px"></button>
             <h2 class="nom">
                 Nom: {{game.quiz.name}}
             </h2>
