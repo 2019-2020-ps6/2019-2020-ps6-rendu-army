@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, HostListener, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopupService } from 'src/services/popup.service';
+import { Stream } from 'stream';
+import { T2sService } from 'src/services/t2s.service';
 
 
 export enum KEY_CODE {
@@ -40,7 +42,7 @@ export class GameHeaderComponent implements OnInit {
 
   
 
-  constructor(private router: Router, private popupService : PopupService) {
+  constructor(private router: Router, private popupService : PopupService, private t2sService : T2sService) {
     if(sessionStorage.getItem("t2sOn")=="false"){
       this.image = "assets/nospeaker.png"
     }
@@ -74,5 +76,9 @@ export class GameHeaderComponent implements OnInit {
       sessionStorage.setItem("t2sOn","true");
       this.image = "assets/speaker.png"
     }
+  }
+
+  callT2s(txt:string){
+      this.t2sService.t2s(txt);
   }
 }

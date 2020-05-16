@@ -69,10 +69,6 @@ export class GameComponent implements OnInit {
     
   }
 
-  /**
-   * Permet de lire un text a l'aide du text-to-speech
-   * @param txt le texte a lire
-   */
 
 
 

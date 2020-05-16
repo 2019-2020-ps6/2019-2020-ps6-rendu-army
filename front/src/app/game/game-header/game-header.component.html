@@ -1,5 +1,5 @@
 <div class="game-header">
-    <button class="fermer" id="esc" (click)="back()"><img src="assets/close.png" width="90px"></button>
-    <button class="son" (click)="changeBool()"><img [src]="image" width="90px"></button>
-    <button class="param" routerLink="/settings"><img src="assets/settings.png" width="90px"></button>
+    <button class="fermer" id="esc" (click)="back()" (focus)="callT2s('fermer')" (mouseover)="callT2s('fermer')"><img src="assets/close.png" width="90px"></button>
+    <button class="son" (click)="changeBool()" (focus)="callT2s('désactiver la lecture des questions')" (mouseover)="callT2s('désactiver la lecture des questions')"><img [src]="image" width="90px"></button>
+    <button class="param" routerLink="/settings"(focus)="callT2s('ouvrir les paramètres')" (mouseover)="callT2s('ouvrir les paramètres')"><img src="assets/settings.png" width="90px"></button>
 </div>

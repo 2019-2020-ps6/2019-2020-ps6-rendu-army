@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class T2sService{
+    /**
+   * Permet de lire un text a l'aide du text-to-speech
+   * @param txt le texte a lire
+   */
+
     public t2s(txt:string){
 
         //Suppresion de la queue precedente

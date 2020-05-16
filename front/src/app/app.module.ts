@@ -31,6 +31,7 @@ import { PopupComponent } from './popup/popup.component';
 import { HistoriesComponent } from './histories/histories.component';
 import { HistoryGameComponent } from './histories/history-game/history-game.component';
 import { HistoryComponent } from './histories/history/history.component';
+import { T2sService } from 'src/services/t2s.service';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { HistoryComponent } from './histories/history/history.component';
   ],
   providers: [
     RouteService,
+    T2sService,
   ],
   bootstrap: [AppComponent]
 })
