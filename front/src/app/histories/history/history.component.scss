@@ -2,20 +2,24 @@
     display: table;
     width: 99%;
     border-collapse: collapse;
-    border: 1px solid black;
+    //border: 1px solid black;
     table-layout: fixed;
-    margin: 0.5% 0.5%;
+    margin: 0.5%;
     cursor: pointer;
     font-weight: bold;
     transition: box-shadow 0.4s ease;
 }
 
+.detail{
+    margin: 0.5%;
+}
+
 .content:hover{
-    box-shadow: 10px 5px rgb(43, 42, 42);
+    box-shadow: 5px 5px rgb(43, 42, 42);
+    outline: 6px solid blue;
 }
 
 .GameStat{
-
     text-align: center;
     display: table-cell;
     vertical-align: middle;
