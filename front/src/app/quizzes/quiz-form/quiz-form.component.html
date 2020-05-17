@@ -1,5 +1,9 @@
 <div class="card">
-  <h2>Créer un nouveau Quiz</h2>
+  <h2>
+    <div *ngIf="quiz; then thenBlock else elseBlock"></div>
+    <ng-template #elseBlock>Créer un nouveau Quiz</ng-template>
+    <ng-template #thenBlock>Modifier le Quiz</ng-template>
+  </h2> 
   <form class="quiz-form" [formGroup]="quizForm">
     <label for="title">
       <span class="span">Titre</span><br>
