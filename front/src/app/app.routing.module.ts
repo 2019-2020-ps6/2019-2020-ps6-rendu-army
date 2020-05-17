@@ -14,6 +14,7 @@ const routes: Routes = [
     {path:'accueil', component: AccueilComponent},
     {path:'quiz-list', component: QuizListComponent},
     {path:'edit-quiz/:id', component: EditQuizComponent},
+    {path:'edit-quiz', component: EditQuizComponent},
     {path:'game/:id', component: GameComponent},
     {path:'settings', component: SettingsComponent},
     {path:'quiz-list/:theme', component: QuizListTheme},

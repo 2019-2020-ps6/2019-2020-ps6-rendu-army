@@ -59,6 +59,8 @@ router.delete('/:quizId', (req,res) => {
 })
 
 router.put('/:quizId', (req, res) => {
+
+  console.log({ ...req.body });
   try{
     const quiz = Quiz.update(req.params.quizId, { ...req.body })
     res.status(201).json(quiz)

@@ -27,6 +27,17 @@ h2{
   padding: 0 1em 2em 1em;
 }
 
+.card-add {
+  width: max-content;
+  background: $white;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.43), 0 0 6px rgba(0, 0, 0, 0.43);
+  padding: 0 1em 2em 1em;
+}
+
 .button-card {
   background-color: $blue;
   border: none;

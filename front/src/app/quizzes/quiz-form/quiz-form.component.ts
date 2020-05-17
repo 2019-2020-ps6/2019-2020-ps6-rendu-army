@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { QuizService } from '../../../services/quiz.service';
@@ -24,26 +24,37 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
   public THEME_LIST: string[] = ['Sport', 'Actor', 'Géographie', 'Autre'];
+
+  @Input()
+  quiz: Quiz;
+
+  private action : string = 'Créer';
   //public quizListComponent :QuizListComponent;
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService, private popupService : PopupService) {
     
-    this.initialisationForm();
-    // You can also add validators to your inputs such as required, maxlength or even create your own validator!
-    // More information: https://angular.io/guide/reactive-forms#simple-form-validation
-    // Advanced validation: https://angular.io/guide/form-validation#reactive-form-validation
   }
 
   ngOnInit() {
+    this.initialisationForm();
   }
 
 
   initialisationForm(){
 
+    var name = '';
+    var theme = '';
+
+    if(this.quiz){
+      name = this.quiz.name;
+      theme = this.quiz.theme;
+      this.action = 'Modifier';
+    }
+
     // Form creation
     this.quizForm = this.formBuilder.group({
-      name: [''],
-      theme:[''],
+      name: [name],
+      theme:[theme],
     });
   }
 
@@ -77,11 +88,18 @@ export class QuizFormComponent implements OnInit {
         this.popupService.open( text, 'OK');
       }
       else{
-        console.log('Adding quiz: ', quizToCreate);
 
-
-        this.quizService.addQuiz(quizToCreate);
-        this.initialisationForm();
+        if(this.quiz){
+          console.log('Updating quiz: ', quizToCreate);
+          this.quiz.name = quizToCreate.name;
+          this.quiz.theme = quizToCreate.theme;
+          this.quizService.updateQuiz(this.quiz);
+        }
+        else{
+          console.log('Adding quiz: ', quizToCreate);
+          this.quizService.addQuiz(quizToCreate);
+          this.action = 'Modifier';
+        }
       }      
     }
   }

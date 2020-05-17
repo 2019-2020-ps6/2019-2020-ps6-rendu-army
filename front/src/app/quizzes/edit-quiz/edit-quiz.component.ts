@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
@@ -15,8 +15,14 @@ export class EditQuizComponent implements OnInit {
   private questionWidth : number = 50;
   private fdir = "row";
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService) { 
-    this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) { 
+    this.quizService.quizSelected$.subscribe((quiz) =>{
+
+      this.quiz = quiz;
+      if(!this.route.snapshot.paramMap.has('id')){
+        this.router.navigate(['edit-quiz/' + quiz.id]);
+      }
+    });
     if(+sessionStorage.getItem("font")>=75){
       this.questionWidth = 90;
       this.fdir = "column";
@@ -25,8 +31,12 @@ export class EditQuizComponent implements OnInit {
 
   ngOnInit() {
     //console.log(this.route.snapshot.paramMap.get('id'))
-    const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.quizService.setSelectedQuiz(id);
+
+    if(this.route.snapshot.paramMap.has('id')){
+
+      const id = parseInt(this.route.snapshot.paramMap.get('id'));
+      this.quizService.setSelectedQuiz(id);
+    }
   }
 
   textEdit(text : string){

@@ -80,4 +80,8 @@ export class QuizListComponent implements OnInit {
   textEdit(text : string){
     this.textBody = text
   }
+
+  createQuiz(){
+    this.router.navigate(['edit-quiz']);
+  }
 }

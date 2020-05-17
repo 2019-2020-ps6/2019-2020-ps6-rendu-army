@@ -1,10 +1,15 @@
 <app-header [titre]="'Edition de Quiz'"></app-header>
-<ng-container *ngIf="quiz">
-  <div class="quiz-infos">
-    <h2>Titre : {{quiz.name}}</h2>
-    <h2>Nombre de questions : {{quiz.questions.length}}</h2>
-  </div>
+
+<div *ngIf="quiz; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+  <div class="edition">
+    <app-quiz-form  (popup)="openModal($event)" [quiz]="quiz" (text)="textEdit($event)"></app-quiz-form>
     <app-question-form [cardWidth]="questionWidth" [quiz]="quiz" (text)="textEdit($event)"></app-question-form>
-    <app-question-list [questionWidth]="questionWidth" [fdir]="fdir" [quiz]="quiz"></app-question-list>
-</ng-container>
-  <div id="overlay"></div>
+  </div>
+  <app-question-list [questionWidth]="questionWidth" [fdir]="fdir" [quiz]="quiz"></app-question-list>
+</ng-template>
+
+<ng-template #elseBlock>
+  <app-quiz-form (popup)="openModal($event)" [quiz]="quiz" (text)="textEdit($event)"></app-quiz-form>
+</ng-template>
+<div id="overlay"></div>
