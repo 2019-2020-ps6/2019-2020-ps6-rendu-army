@@ -11,11 +11,19 @@
         <div *ngFor="let address of answers.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">
             <label>
-              <span class="span">Réponse</span>         
-              <input type="text" [formControlName]="'value'">
-              <br>
-              <span class="span">Correcte</span>
-              <input type="checkbox" [formControlName]="'isCorrect'">
+              <fieldset>
+                <legend>
+                  <span class="span">Réponse</span>         
+                </legend>
+                <input type="text" [formControlName]="'value'">
+                <br>
+                <span class="span">Correcte</span>
+                <br>
+                <label class="switch">
+                  <input class="checkbox" type="checkbox" [formControlName]="'isCorrect'">
+                  <span class="check round"></span>
+                </label>
+              </fieldset>
             </label>
           </div>
         </div>

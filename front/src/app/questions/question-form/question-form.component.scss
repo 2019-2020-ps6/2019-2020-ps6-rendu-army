@@ -1,1 +1,67 @@
 @import '../../../styles/card-form.scss';
+
+fieldset{
+    width: 80%;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+}
+
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.check{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.check:before {
+    position: absolute;
+    content: "";
+    height: 32px;
+    width: 32px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.checkbox:checked + .check {
+  background-color: $blue;
+}
+  
+.checkbox:focus + .check {
+  box-shadow: 0 0 1px $blue;
+}
+  
+.checkbox:checked + .check:before {
+  -webkit-transform: translateX(60px);
+  -ms-transform: translateX(60px);
+  transform: translateX(60px);
+}
+  
+/* Rounded sliders */
+.check.round {
+  border-radius: 40px;
+}
+  
+.check.round:before {
+  border-radius: 50%;
+}
