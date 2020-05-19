@@ -24,7 +24,19 @@ router.get('/:userId', (req,res) => {
 
 router.post('/', (req, res) => {
   try {
-    const user = User.create({ ...req.body })
+    var user = User.create({ ...req.body })
+    console.log(user)
+    var setting;
+    console.log(user.id)
+    setting.light = 100;
+    console.log(user)
+    setting.color = '#aaaaaa';
+    setting.font = '50';
+    setting.t2sOn = false;
+    setting.id = 1;
+    console.log(user)
+    user.setting = setting;
+    user = User.update(user.id , user.stringify());
     res.status(201).json(user)
   } catch (err) {
     if (err.name === 'ValidationError') {
@@ -45,7 +57,9 @@ router.delete('/:userId', (req,res) => {
 })
 
 router.put('/:userId', (req, res) => {
+  
   try{
+    console.log({ ...req.body })
     const user = User.update(req.params.userId, { ...req.body })
     res.status(201).json(user)
   } catch (err) {

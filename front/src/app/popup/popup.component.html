@@ -4,12 +4,17 @@
             <h2>Attention</h2>
         </div>
         <span class="span">{{info}}</span>
-    
-        <div class="button">
-            <button *ngIf="buttonTrue != null" class="button-card" (click)="close(true)">{{buttonTrue}}</button>
+        <div *ngIf="saisie">       
+            <input   ref-name placeholder ="Entrez votre nom">
+            <button *ngIf="buttonTrue != null" class="button-card" (click)="close(true, name.value)">{{buttonTrue}} </button>
+            <button *ngIf="buttonFalse != null" class="button-card" (click)="close(false)">{{buttonFalse}}</button>
+        </div>
+        <div *ngIf="!saisie"> 
+            <button *ngIf="buttonTrue != null" class="button-card" (click)="close(true)">{{buttonTrue}} </button>
             <button *ngIf="buttonFalse != null" class="button-card" (click)="close(false)">{{buttonFalse}}</button>
         </div>
     </div>
 </div>
 <div class="popup-background"></div>
 
+ 

@@ -5,5 +5,6 @@ module.exports = new BaseModel('Setting', {
     color: Joi.string(),
     font: Joi.number(),
     light: Joi.number(),
-    t2sOn: Joi.boolean()
+    t2sOn: Joi.boolean(),
+    id: Joi.number(),
 })

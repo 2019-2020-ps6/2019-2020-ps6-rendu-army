@@ -13,6 +13,8 @@ export class PopupComponent implements OnInit, OnDestroy {
     info : string;
     buttonTrue : string;
     buttonFalse : string;
+    saisie : boolean;
+    name: String;
 
     private element : any;
 
@@ -29,7 +31,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         // close modal on background click
         this.element.addEventListener('click', el => {
             if (el.target.className === 'popup') {
-                this.close(false);
+                this.close(false, null);
             }
         });
 
@@ -43,24 +45,28 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     // open modal
-    open(info : string, buttonTrue :string, buttonFalse : string): void {
+    open(info : string, buttonTrue :string, buttonFalse : string, saisie: boolean): void {
 
         this.info = info;
         this.buttonTrue = buttonTrue;
         this.buttonFalse = buttonFalse;
+        this.saisie = saisie;
         this.element.style.display = 'block';
         document.body.style.overflow = 'hidden';
         document.body.classList.add('popup');
         window.scroll(0,0);
     }
 
+
     // close modal
-    close(b : boolean): void {
+    close(b : boolean , name : String =null): void {
 
 
         this.element.style.display = 'none';
         document.body.style.overflow = 'auto';
         document.body.classList.remove('popup');
         this.modalService.setResponse(b);
+        this.modalService.setName(name);
     }
+
 }
