@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Pierre",
+    "id": 12,
+    "setting": {
+      "id": 12,
+      "color": "#aaaaaa",
+      "font": "89",
+      "light": 100,
+      "t2sOn": false
+    }
+  },
+  {
+    "name": "Jean-Didier",
+    "id": 13,
+    "setting": {
+      "id": 13,
+      "color": "#aaaaaa",
+      "font": "60",
+      "light": 100,
+      "t2sOn": false
+    }
+  },
+  {
+    "name": "Simon",
+    "id": 14,
+    "setting": {
+      "id": 14,
+      "color": "#f2f2f2",
+      "font": "75",
+      "light": 100,
+      "t2sOn": true
+    }
+  },
+  {
+    "name": "Michel4",
+    "id": 15,
+    "setting": {
+      "id": 15,
+      "color": "#48BB3D",
+      "font": 50,
+      "light": 100,
+      "t2sOn": false
+    }
+  },
+  {
+    "name": "Martin",
+    "id": 1589961734284,
+    "setting": {
+      "font": "85",
+      "id": 1589961734284,
+      "color": "#f2f2f2",
+      "light": 100,
+      "t2sOn": false
+    }
+  }
+]
