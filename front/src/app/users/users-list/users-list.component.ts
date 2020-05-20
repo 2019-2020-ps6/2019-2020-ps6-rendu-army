@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit{
     }
 
     createUser(){
-        this.popupService.open('création nouvelle utilisateur' , 'valider' , 'annuler', true);
+        this.popupService.open('Création d\'un nouvel utilisateur' , 'Valider' , 'Annuler', true);
         this.popupService.name$.pipe(first()).subscribe((name) => {
             if(name){
                 var user : User = {name} as User;

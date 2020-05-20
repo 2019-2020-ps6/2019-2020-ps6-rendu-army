@@ -1,11 +1,8 @@
 <div class="popup">
     <div class="popup-body">
-        <div class="title">
-            <h2>Attention</h2>
-        </div>
         <span class="span">{{info}}</span>
         <div *ngIf="saisie" class="button">       
-            <input   ref-name placeholder ="Entrez votre nom">
+            <input type="text"  ref-name placeholder="Entrez votre nom">
                 <button *ngIf="buttonTrue != null" class="button-card" (click)="close(true, name.value)">{{buttonTrue}} </button>
                 <button *ngIf="buttonFalse != null" class="button-card" (click)="close(false)">{{buttonFalse}}</button>
         </div>

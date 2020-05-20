@@ -1,7 +1,5 @@
 @import '../user/user.component.scss';
 
-
-
 .conteneur{
     display: flex;
     flex-direction: column;
@@ -9,9 +7,17 @@
 }
 
 
+conteneur:nth-child(1){
+    margin-left: 100%;
+    margin-right: 100%;
+}
+
+.add:hover{
+    font-size: 50px;
+}
+
 .title{
     font-weight: bold;
-    padding-top: 1em;
     font-size: 5em;
     text-align: center;
 }
