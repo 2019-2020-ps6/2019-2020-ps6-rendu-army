@@ -25,19 +25,17 @@ router.get('/:userId', (req,res) => {
 router.post('/', (req, res) => {
   try {
     var user = User.create({ ...req.body })
-    console.log(user)
-    var setting;
-    console.log(user.id)
-    setting.light = 100;
-    console.log(user)
-    setting.color = '#aaaaaa';
-    setting.font = '50';
-    setting.t2sOn = false;
-    setting.id = 1;
-    console.log(user)
-    user.setting = setting;
-    user = User.update(user.id , user.stringify());
+    var setting = {};
+    setting.font = '50'
+    setting.id = user.id
+    setting.color = '#f2f2f2'
+    setting.light = 100
+    setting.t2sOn = false
+    user.setting = setting
+
+    user = User.update(user.id + '' , user)
     res.status(201).json(user)
+
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra)

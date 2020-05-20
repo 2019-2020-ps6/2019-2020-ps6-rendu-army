@@ -3,6 +3,7 @@ import { User, Setting } from 'src/models/user.model';
 import { Router } from '@angular/router';
 import { UserService } from 'src/services/user.service';
 import { PopupService } from 'src/services/popup.service';
+import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'users-list',
@@ -31,9 +32,11 @@ export class UserListComponent implements OnInit{
 
     createUser(){
         this.popupService.open('création nouvelle utilisateur' , 'valider' , 'annuler', true);
-        this.popupService.name$.subscribe((name) => {
-            var user : User = {name} as User;
-            this.userService.addUser(user); 
+        this.popupService.name$.pipe(first()).subscribe((name) => {
+            if(name){
+                var user : User = {name} as User;
+                this.userService.addUser(user); 
+            }
         })
     }
 
